@@ -79,8 +79,12 @@ def search(driver, query, ishomepage=0):
     i.e. default this snipped is executed
 
 """
+# Options
+op = webdriver.ChromeOptions()
+op.add_argument('headless')
+
 # Setting up chrome driver
-driver = webdriver.Chrome(executable_path='D:/programs/python/project/bot/chromedriver.exe')
+driver = webdriver.Chrome(executable_path='D:/programs/python/project/bot/chromedriver.exe', options=op)
 
 # Window maximized
 driver.maximize_window()
@@ -102,4 +106,4 @@ for i in range(1,len(sys.argv)):
         pass
 
 # Closing browser window
-# driver.close()
+driver.close()
