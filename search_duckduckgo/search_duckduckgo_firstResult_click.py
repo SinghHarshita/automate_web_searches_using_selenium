@@ -92,14 +92,22 @@ ishomepage = 1
 
 # Making the search
 i = 1
-# result = None
+result = None
 for i in range(1,len(sys.argv)):
     # print(sys.argv[i])
     try :
-        search(driver=driver, query=str(sys.argv[i]), ishomepage=ishomepage)
+        result = search(driver=driver, query=str(sys.argv[i]), ishomepage=ishomepage)
         ishomepage = 0
     except Exception as e:
         pass
+
+if result != None:
+    element = driver.find_element_by_link_text(result[0].text.split("\n")[1])
+    # print(element)
+    element.click()
+
+    href = "a[href='" + result[0].text.split("\n")[1] + "']"
+    # driver.find_element_by_css_selector("a[href='publications.html']").click()
 
 # Closing browser window
 # driver.close()
