@@ -102,12 +102,16 @@ for i in range(1,len(sys.argv)):
         pass
 
 if result != None:
-    element = driver.find_element_by_link_text(result[0].text.split("\n")[1])
-    # print(element)
-    element.click()
+    try :
+        element = driver.find_element_by_id("r1-0")
+        # print(element)
+        element.click()
 
-    href = "a[href='" + result[0].text.split("\n")[1] + "']"
+        href = "a[href='" + result[0].text.split("\n")[1] + "']"
     # driver.find_element_by_css_selector("a[href='publications.html']").click()
+    except Exception as e:
+        print(e)
+        # print(result[0].text.split("\n")[1])
 
 # Closing browser window
 # driver.close()
